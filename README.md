@@ -1,1 +1,1 @@
-Test utilities I use. See tests/ for how.
+Test utilities I use.
