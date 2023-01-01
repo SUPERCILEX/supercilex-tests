@@ -38,7 +38,7 @@ pub fn clippy() {
     #[cfg(not(miri))]
     {
         let mut command = process::Command::new("cargo");
-        command.args(["clippy", "--all-targets", "--all-features"]);
+        command.args(["clippy", "--workspace", "--all-targets", "--all-features"]);
 
         let config = [
             "-W",
