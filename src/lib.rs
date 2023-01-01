@@ -1,4 +1,5 @@
 #![feature(exit_status_error)]
+#![feature(slice_flatten)]
 #![allow(clippy::missing_panics_doc)]
 
 use std::{env, fmt::Write, path::PathBuf, process};
@@ -41,21 +42,15 @@ pub fn clippy() {
         command.args(["clippy", "--workspace", "--all-targets", "--all-features"]);
 
         let config = [
-            "-W",
-            "clippy::all",
-            "-W",
-            "clippy::pedantic",
-            "-W",
-            "clippy::nursery",
-            "-W",
-            "clippy::cargo",
-            "-W",
-            "clippy::float_cmp_const",
-            "-W",
-            "clippy::empty_structs_with_brackets",
-            "-A",
-            "clippy::multiple_crate_versions",
-        ];
+            ["-W", "clippy::all"],
+            ["-W", "clippy::pedantic"],
+            ["-W", "clippy::nursery"],
+            ["-W", "clippy::cargo"],
+            ["-W", "clippy::float_cmp_const"],
+            ["-W", "clippy::empty_structs_with_brackets"],
+            ["-A", "clippy::multiple_crate_versions"],
+        ]
+        .flatten();
         if env::var_os("UPDATE_EXPECT").is_some() {
             command
                 .args(["--fix", "--allow-dirty", "--allow-staged", "--"])
