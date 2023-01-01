@@ -1,7 +1,7 @@
 #![feature(exit_status_error)]
 #![allow(clippy::missing_panics_doc)]
 
-use std::{env, fmt::Write, process};
+use std::{env, fmt::Write, path::PathBuf, process};
 
 use expect_test::expect_file;
 use public_api::PublicApi;
@@ -88,7 +88,7 @@ pub fn api() {
             .unwrap()
             .to_string();
 
-        expect_file!["../api.golden"].assert_eq(&api);
+        expect_file![path_from_root("api.golden")].assert_eq(&api);
     }
 }
 
@@ -103,9 +103,15 @@ pub fn help_for_review(mut command: clap::Command) {
         write_help(&mut long, &mut command, LongOrShortHelp::Long);
         write_help(&mut short, &mut command, LongOrShortHelp::Short);
 
-        expect_file!["../command-reference.golden"].assert_eq(&long);
-        expect_file!["../command-reference-short.golden"].assert_eq(&short);
+        expect_file![path_from_root("command-reference.golden")].assert_eq(&long);
+        expect_file![path_from_root("command-reference-short.golden")].assert_eq(&short);
     }
+}
+
+fn path_from_root(path: &str) -> PathBuf {
+    let mut dir = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap());
+    dir.push(path);
+    dir
 }
 
 #[derive(Copy, Clone)]
