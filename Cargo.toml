@@ -11,6 +11,7 @@ license = "Apache-2.0"
 
 [dependencies]
 clap = { version = "4.0.32", default-features = false, features = ["std"] }
+clap2 = { version = "4.0.32", default-features = false, features = ["std"] }
 expect-test = "1.4.0"
 public-api = "0.25.0"
 rustdoc-json = "0.7.4"
