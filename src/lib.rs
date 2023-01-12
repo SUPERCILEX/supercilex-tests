@@ -10,7 +10,7 @@ use public_api::PublicApi;
 pub fn fmt() {
     #[cfg(not(miri))]
     {
-        let mut command = process::Command::new("cargo");
+        let mut command = process::Command::new(env::var("CARGO").unwrap());
         command.args(["fmt", "--all"]);
 
         let config = "--config=version=Two,imports_granularity=Crate,\
@@ -38,7 +38,7 @@ pub fn fmt() {
 pub fn clippy() {
     #[cfg(not(miri))]
     {
-        let mut command = process::Command::new("cargo");
+        let mut command = process::Command::new(env::var("CARGO").unwrap());
         command.args(["clippy", "--workspace", "--all-targets", "--all-features"]);
 
         let config = [
