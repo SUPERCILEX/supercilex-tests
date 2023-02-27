@@ -87,52 +87,6 @@ pub fn api() {
     }
 }
 
-pub fn help_for_review(mut command: clap::Command) {
-    #[derive(Copy, Clone)]
-    enum LongOrShortHelp {
-        Long,
-        Short,
-    }
-
-    fn write_help(
-        buffer: &mut impl Write,
-        cmd: &mut clap::Command,
-        long_or_short_help: LongOrShortHelp,
-    ) {
-        write!(
-            buffer,
-            "{}",
-            match long_or_short_help {
-                LongOrShortHelp::Long => cmd.render_long_help(),
-                LongOrShortHelp::Short => cmd.render_help(),
-            }
-        )
-        .unwrap();
-
-        for sub in cmd.get_subcommands_mut() {
-            writeln!(buffer).unwrap();
-            writeln!(buffer, "---").unwrap();
-            writeln!(buffer).unwrap();
-
-            write_help(buffer, sub, long_or_short_help);
-        }
-    }
-
-    #[cfg(not(miri))] // wrap_help breaks miri
-    {
-        command.build();
-
-        let mut long = String::new();
-        let mut short = String::new();
-
-        write_help(&mut long, &mut command, LongOrShortHelp::Long);
-        write_help(&mut short, &mut command, LongOrShortHelp::Short);
-
-        expect_file![path_from_root("command-reference.golden")].assert_eq(&long);
-        expect_file![path_from_root("command-reference-short.golden")].assert_eq(&short);
-    }
-}
-
 pub fn help_for_review2(mut command: clap2::Command) {
     #[derive(Copy, Clone)]
     enum LongOrShortHelp {
