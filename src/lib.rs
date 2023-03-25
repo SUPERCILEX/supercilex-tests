@@ -5,7 +5,6 @@
 use std::{env, fmt::Write, path::PathBuf, process};
 
 use expect_test::expect_file;
-use public_api::PublicApi;
 
 pub fn fmt() {
     #[cfg(not(miri))]
@@ -79,7 +78,8 @@ pub fn api() {
             .build()
             .unwrap();
 
-        let api = PublicApi::from_rustdoc_json(json_path, public_api::Options::default())
+        let api = public_api::Builder::from_rustdoc_json(json_path)
+            .build()
             .unwrap()
             .to_string();
 
