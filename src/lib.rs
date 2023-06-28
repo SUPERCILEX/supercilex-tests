@@ -87,7 +87,7 @@ pub fn api() {
     }
 }
 
-pub fn help_for_review2(mut command: clap2::Command) {
+pub fn help_for_review2(mut command: clap_builder::Command) {
     #[derive(Copy, Clone)]
     enum LongOrShortHelp {
         Long,
@@ -96,7 +96,7 @@ pub fn help_for_review2(mut command: clap2::Command) {
 
     fn write_help(
         buffer: &mut impl Write,
-        cmd: &mut clap2::Command,
+        cmd: &mut clap_builder::Command,
         long_or_short_help: LongOrShortHelp,
     ) {
         write!(

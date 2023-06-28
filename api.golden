@@ -2,4 +2,4 @@ pub mod supercilex_tests
 pub fn supercilex_tests::api()
 pub fn supercilex_tests::clippy()
 pub fn supercilex_tests::fmt()
-pub fn supercilex_tests::help_for_review2(command: clap2::builder::command::Command)
+pub fn supercilex_tests::help_for_review2(command: clap_builder::builder::command::Command)
