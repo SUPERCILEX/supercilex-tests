@@ -1,6 +1,6 @@
 [package]
 name = "supercilex-tests"
-version = "0.3.4"
+version = "0.4.0"
 authors = ["Alex Saveau <saveau.alexandre@gmail.com>"]
 edition = "2021"
 description = "Test utilities I use."
@@ -10,7 +10,7 @@ categories = ["development-tools::testing"]
 license = "Apache-2.0"
 
 [dependencies]
-clap_builder = { version = "4.4.2", default-features = false, features = ["std"] }
+clap_builder = { version = "4.4.8", default-features = false, features = ["std"] }
 expect-test = "1.4.1"
 public-api = "0.32.0"
 rustdoc-json = "0.8.7"
