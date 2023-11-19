@@ -87,7 +87,7 @@ pub fn api() {
     }
 }
 
-pub fn help_for_review(mut command: clap_builder::Command) {
+pub fn help_for_review(command: clap_builder::Command) {
     #[derive(Copy, Clone)]
     enum LongOrShortHelp {
         Long,
@@ -120,6 +120,7 @@ pub fn help_for_review(mut command: clap_builder::Command) {
 
     #[cfg(not(miri))] // wrap_help breaks miri
     {
+        let mut command = command.term_width(100);
         command.build();
 
         let mut long = String::new();

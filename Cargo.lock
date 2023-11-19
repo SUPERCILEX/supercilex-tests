@@ -238,7 +238,7 @@ dependencies = [
 
 [[package]]
 name = "supercilex-tests"
-version = "0.4.0"
+version = "0.4.1"
 dependencies = [
  "clap_builder",
  "expect-test",
