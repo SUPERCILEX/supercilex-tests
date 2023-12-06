@@ -2,9 +2,7 @@
 #![feature(slice_flatten)]
 #![allow(clippy::missing_panics_doc)]
 
-use std::{env, fmt::Write, path::PathBuf, process};
-
-use expect_test::expect_file;
+use std::{env, process};
 
 pub fn fmt() {
     #[cfg(not(miri))]
@@ -70,9 +68,12 @@ pub fn clippy() {
     }
 }
 
+#[cfg(feature = "api")]
 pub fn api() {
     #[cfg(not(miri))] // gnu_get_libc_version breaks miri
     {
+        use expect_test::expect_file;
+
         let json_path = rustdoc_json::Builder::default()
             .all_features(true)
             .build()
@@ -87,6 +88,7 @@ pub fn api() {
     }
 }
 
+#[cfg(feature = "clap")]
 pub fn help_for_review(command: clap_builder::Command) {
     #[derive(Copy, Clone)]
     enum LongOrShortHelp {
@@ -95,7 +97,7 @@ pub fn help_for_review(command: clap_builder::Command) {
     }
 
     fn write_help(
-        buffer: &mut impl Write,
+        buffer: &mut impl std::fmt::Write,
         cmd: &mut clap_builder::Command,
         long_or_short_help: LongOrShortHelp,
     ) {
@@ -120,6 +122,8 @@ pub fn help_for_review(command: clap_builder::Command) {
 
     #[cfg(not(miri))] // wrap_help breaks miri
     {
+        use expect_test::expect_file;
+
         let mut command = command.term_width(100);
         command.build();
 
@@ -134,8 +138,9 @@ pub fn help_for_review(command: clap_builder::Command) {
     }
 }
 
-fn path_from_root(path: &str) -> PathBuf {
-    let mut dir = PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap());
+#[cfg(any(feature = "api", feature = "clap"))]
+fn path_from_root(path: &str) -> std::path::PathBuf {
+    let mut dir = std::path::PathBuf::from(env::var_os("CARGO_MANIFEST_DIR").unwrap());
     dir.push(path);
     dir
 }

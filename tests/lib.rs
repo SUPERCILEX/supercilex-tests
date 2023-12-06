@@ -9,6 +9,7 @@ fn clippy() {
 }
 
 #[test]
+#[cfg(feature = "api")]
 fn api() {
     supercilex_tests::api();
 }

@@ -10,7 +10,12 @@ categories = ["development-tools::testing"]
 license = "Apache-2.0"
 
 [dependencies]
-clap_builder = { version = "4.4.8", default-features = false, features = ["std"] }
-expect-test = "1.4.1"
-public-api = "0.32.0"
-rustdoc-json = "0.8.7"
+clap_builder = { version = "4.4.11", default-features = false, features = ["std"], optional = true }
+expect-test = { version = "1.4.1", optional = true }
+public-api = { version = "0.33.1", optional = true }
+rustdoc-json = { version = "0.8.8", optional = true }
+
+[features]
+default = ["api", "clap"]
+api = ["expect-test", "public-api", "rustdoc-json"]
+clap = ["clap_builder"]
