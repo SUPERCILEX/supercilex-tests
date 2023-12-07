@@ -1,6 +1,6 @@
 [package]
 name = "supercilex-tests"
-version = "0.4.2"
+version = "0.4.3"
 authors = ["Alex Saveau <saveau.alexandre@gmail.com>"]
 edition = "2021"
 description = "Test utilities I use."
@@ -17,5 +17,5 @@ rustdoc-json = { version = "0.8.8", optional = true }
 
 [features]
 default = ["api", "clap"]
-api = ["expect-test", "public-api", "rustdoc-json"]
-clap = ["clap_builder"]
+api = ["dep:expect-test", "dep:public-api", "dep:rustdoc-json"]
+clap = ["dep:clap_builder"]
