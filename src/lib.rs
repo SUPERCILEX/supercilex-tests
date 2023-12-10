@@ -46,6 +46,7 @@ pub fn clippy() {
             ["-W", "clippy::float_cmp_const"],
             ["-W", "clippy::empty_structs_with_brackets"],
             ["-A", "clippy::multiple_crate_versions"],
+            ["-A", "clippy::module_name_repetitions"],
         ]
         .flatten();
         if env::var_os("UPDATE_EXPECT").is_some() {
