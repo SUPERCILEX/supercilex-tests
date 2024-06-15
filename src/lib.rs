@@ -1,5 +1,4 @@
 #![feature(exit_status_error)]
-#![feature(slice_flatten)]
 #![allow(clippy::missing_panics_doc)]
 
 use std::{env, process};
@@ -48,7 +47,7 @@ pub fn clippy() {
             ["-A", "clippy::multiple_crate_versions"],
             ["-A", "clippy::module_name_repetitions"],
         ]
-        .flatten();
+        .as_flattened();
         if env::var_os("UPDATE_EXPECT").is_some() {
             command
                 .args(["--fix", "--allow-dirty", "--allow-staged", "--"])
