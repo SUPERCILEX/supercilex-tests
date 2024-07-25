@@ -1,5 +1,4 @@
 #![feature(exit_status_error)]
-#![allow(clippy::missing_panics_doc)]
 
 use std::{env, process};
 
@@ -46,6 +45,12 @@ pub fn clippy() {
             ["-W", "clippy::empty_structs_with_brackets"],
             ["-A", "clippy::multiple_crate_versions"],
             ["-A", "clippy::module_name_repetitions"],
+            ["-A", "clippy::too_many_lines"],
+            ["-A", "clippy::too_many_arguments"],
+            ["-A", "clippy::cognitive_complexity"],
+            ["-A", "clippy::type_complexity"],
+            ["-A", "clippy::missing_panics_doc"],
+            ["-A", "clippy::missing_errors_doc"],
         ]
         .as_flattened();
         if env::var_os("UPDATE_EXPECT").is_some() {
