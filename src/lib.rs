@@ -106,14 +106,10 @@ pub fn help_for_review(command: clap_builder::Command) {
         cmd: &mut clap_builder::Command,
         long_or_short_help: LongOrShortHelp,
     ) {
-        write!(
-            buffer,
-            "{}",
-            match long_or_short_help {
-                LongOrShortHelp::Long => cmd.render_long_help(),
-                LongOrShortHelp::Short => cmd.render_help(),
-            }
-        )
+        write!(buffer, "{}", match long_or_short_help {
+            LongOrShortHelp::Long => cmd.render_long_help(),
+            LongOrShortHelp::Short => cmd.render_help(),
+        })
         .unwrap();
 
         for sub in cmd.get_subcommands_mut() {
