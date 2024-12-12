@@ -8,10 +8,10 @@ pub fn fmt() {
         let mut command = process::Command::new(env::var("CARGO").unwrap());
         command.args(["fmt", "--all"]);
 
-        let config = "--config=imports_granularity=Crate,group_imports=StdExternalCrate,\
-                      use_field_init_shorthand=true,format_code_in_doc_comments=true,\
-                      format_macro_bodies=true,format_macro_matchers=true,format_strings=true,\
-                      wrap_comments=true";
+        let config = "--config=style_edition=2024,imports_granularity=Crate,\
+                      group_imports=StdExternalCrate,use_field_init_shorthand=true,\
+                      format_code_in_doc_comments=true,format_macro_bodies=true,\
+                      format_macro_matchers=true,format_strings=true,wrap_comments=true";
         if env::var_os("UPDATE_EXPECT").is_some() {
             command
                 .args(["--", config])
