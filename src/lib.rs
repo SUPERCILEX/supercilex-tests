@@ -53,6 +53,7 @@ pub fn clippy() {
             ["-A", "clippy::missing_panics_doc"],
             ["-A", "clippy::missing_errors_doc"],
             ["-A", "clippy::blocks_in_conditions"],
+            ["-A", "clippy::unnecessary_debug_formatting"],
         ]
         .as_flattened();
         if env::var_os("UPDATE_EXPECT").is_some() {
