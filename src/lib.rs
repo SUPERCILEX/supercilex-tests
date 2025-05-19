@@ -54,6 +54,7 @@ pub fn clippy() {
             ["-A", "clippy::missing_errors_doc"],
             ["-A", "clippy::blocks_in_conditions"],
             ["-A", "clippy::unnecessary_debug_formatting"],
+            ["-A", "clippy::struct_excessive_bools"],
         ]
         .as_flattened();
         if env::var_os("UPDATE_EXPECT").is_some() {
