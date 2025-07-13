@@ -118,6 +118,10 @@ pub fn help_for_review(command: clap_builder::Command) {
         .unwrap();
 
         for sub in cmd.get_subcommands_mut() {
+            if sub.get_name() == "help" {
+                continue;
+            }
+
             writeln!(buffer).unwrap();
             writeln!(buffer, "---").unwrap();
             writeln!(buffer).unwrap();
