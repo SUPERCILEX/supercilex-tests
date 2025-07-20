@@ -146,9 +146,9 @@ dependencies = [
 
 [[package]]
 name = "public-api"
-version = "0.48.0"
+version = "0.49.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c5908e94d7ca6f4492399a8ad7f7722d390fabdc72d086c6df20809d31e024b3"
+checksum = "b5e8ee8317956d1db0b07e427de41169754b80372278c46c4bbf3cad187f358e"
 dependencies = [
  "hashbag",
  "rustdoc-types",
@@ -182,9 +182,9 @@ dependencies = [
 
 [[package]]
 name = "rustdoc-types"
-version = "0.53.0"
+version = "0.54.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "53175c56be456e96171b9c3efcd8e5216fbb7b40cc6355a1953090556621205b"
+checksum = "814bc4dddadb32bef41ec20b836b35aa7aaf88356c721a0dd9cda41331394b8b"
 dependencies = [
  "serde",
  "serde_derive",
@@ -227,9 +227,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.140"
+version = "1.0.141"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "20068b6e96dc6c9bd23e01df8827e6c7e1f2fddd43c21810382803c136b99373"
+checksum = "30b9eff21ebe718216c6ec64e1d9ac57087aad11efc64e32002bce4a0d4c03d3"
 dependencies = [
  "itoa",
  "memchr",
@@ -248,7 +248,7 @@ dependencies = [
 
 [[package]]
 name = "supercilex-tests"
-version = "0.4.20"
+version = "0.4.21"
 dependencies = [
  "clap_builder",
  "expect-test",
